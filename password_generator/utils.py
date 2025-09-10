@@ -13,7 +13,14 @@ class PasswordManager():
 
         with open('password.txt','w') as file:
             file.write('=====PASSWORDS====\n')
-        
+
+    def __len__(self) :
+        self.default_pass
+
+    def __str__(self):
+        self.filename
+
+
     def g_random_password(self,len=None):
         if self.len == None:
            length =  self.default_pass
