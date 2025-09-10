@@ -40,4 +40,3 @@ venv\Scripts\activate      # Windows
 ```
   </p>
 
-<h2>1. Clone the repository</h2>
