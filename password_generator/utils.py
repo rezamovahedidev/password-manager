@@ -22,7 +22,7 @@ class PasswordManager():
 
 
     def g_random_password(self,len=None):
-        if self.len == None:
+        if len is None:
            length =  self.default_pass
         
         chars = string.ascii_letters + string.ascii_uppercase + string.digits
@@ -40,8 +40,17 @@ class PasswordManager():
             file.write(self.filename, '\n')
 
     def number_password(self,len=None):
-        if not self.len:
+        if len is None:
             lenght = self.default_pass
         
         number_pass = (string.digits **2) + (string.digits **2)
-        passwords = ''.join(secrets.choice(number_pass) for _ in range(12))
+        passwords = ''.join(secrets.choice(number_pass) for _ in range(lenght))
+
+    def string_password(self,len=None):
+        if len is None:
+            lenght = self.default_pass
+
+        string_pass = string.ascii_letters + string.ascii_uppercase + string.ascii_lowercase
+        passwords = ''.join(secrets.choice(string_pass) for _ in range(lenght))
+
+        
