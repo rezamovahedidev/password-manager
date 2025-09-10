@@ -11,6 +11,7 @@ It is designed as a beginner-friendly project but can be extended into a real-wo
 </h1>
 <p>
 
+
 ✅ Generate secure random passwords using secrets and string
 
 ✅ Set default password length (default = 12 characters)
@@ -22,4 +23,21 @@ It is designed as a beginner-friendly project but can be extended into a real-wo
 ✅ Encrypt and decrypt passwords using the cryptography package 
 
 ✅ Organized OOP design with a PasswordManager class
-</p>
+
+
+<h2>1. Clone the repository</h2>
+
+```bash
+git clone https://github.com/rezamovahedidev/password-manager.git
+cd password-manager
+```
+<h2>2. Create a virtual environment (optional but recommended)</h2>
+
+```bash
+python -m venv venv
+source venv/bin/activate   # Linux / Mac
+venv\Scripts\activate      # Windows
+```
+  </p>
+
+<h2>1. Clone the repository</h2>
