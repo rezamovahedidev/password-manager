@@ -60,3 +60,15 @@ class PasswordManager():
         passwords = ''.join(secrets.choice(string_pass) for _ in range(lenght))
 
         return passwords
+
+    def list_password(self):
+        pass
+
+
+    def removeL_password(self):
+        pass
+
+    
+    def encrypt_password(self):
+        pass
+
