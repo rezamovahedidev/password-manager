@@ -1,17 +1,18 @@
-import pwd
 import secrets
 import string
 
 class PasswordManager():
+    
     '''
     a password manager return random passwords and save it
     '''
+
+    
     def __init__(self,filename='password.txt',default_pass= 12):
-        self.filename = fname
-        self.len = len_
+        self.filename = filename
         self.default_pass = default_pass 
 
-        with open('password.txt','w') as file:
+        with open(self.filename,'w') as file:
             file.write('=====PASSWORDS====\n')
 
     def __len__(self) :
@@ -21,36 +22,41 @@ class PasswordManager():
         self.filename
 
 
-    def g_random_password(self,len=None):
-        if len is None:
-           length =  self.default_pass
-        
-        chars = string.ascii_letters + string.ascii_uppercase + string.digits
-        passwords = ''.join(secrets.choice(chars) for _ in range(length))
+    def g_random_password(self,lentgh=None):
+        if lentgh is None:
+           lentgh =  self.default_pass
+        else:
+            chars = string.ascii_letters + string.ascii_uppercase + string.digits
+            passwords = ''.join(secrets.choice(chars) for _ in range(lentgh))
 
         return passwords
 
-    def save_password(self, password,service):
+    def save_password(self, password):
         '''
         save password to file txt
         '''
-        print('====PASWORD SAVED===\n')
+        try:
+            print('password created succesfullly')
+            with open(self.filename,'a') as file:
+                file.write(password)
+        except ValueError:
+            print('Value Error check the the lenght or password')
 
-        with open(self.filename,'a') as file:
-            file.write(self.filename, '\n')
 
-    def number_password(self,len=None):
-        if len is None:
+    def number_password(self,lenght=None):
+        if lenght is None:
             lenght = self.default_pass
         
-        number_pass = (string.digits **2) + (string.digits **2)
+        number_pass = string.digits + string.digits
         passwords = ''.join(secrets.choice(number_pass) for _ in range(lenght))
+        
+        return passwords
 
-    def string_password(self,len=None):
-        if len is None:
+    def string_password(self,lenght=None):
+        if lenght is None:
             lenght = self.default_pass
 
         string_pass = string.ascii_letters + string.ascii_uppercase + string.ascii_lowercase
         passwords = ''.join(secrets.choice(string_pass) for _ in range(lenght))
 
-        
+        return passwords
