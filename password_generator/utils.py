@@ -6,8 +6,7 @@ class PasswordManager():
     '''
     a password manager return random passwords and save it
     '''
-
-    
+   
     def __init__(self,filename='password.txt',default_pass= 12):
         self.filename = filename
         self.default_pass = default_pass 
