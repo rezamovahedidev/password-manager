@@ -1,4 +1,4 @@
-from utils import PasswordManager
+from password_generator.utils import PasswordManager
 
 
 def main():
