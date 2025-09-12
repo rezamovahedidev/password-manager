@@ -79,7 +79,13 @@ class PasswordManager():
             console.print(table)
 
     def remove_password(self, filename='password.txt'):
-        pass
+        try:
+            with open(filename, 'r') as file:
+                lines = file.readline()
+                if not lines:
+                    print('no password >> please cerate a password')
+                    return
+                line = lines[::-1]
 
     def encrypt_password(self):
         pass
