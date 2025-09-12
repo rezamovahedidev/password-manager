@@ -2,6 +2,7 @@ from utils import PasswordManager
 
 pas = PasswordManager()
 
-str_ = pas.string_password(12)
-pas.save_password(str_)
-print(pas.filename)
+while True:
+    str_ = pas.string_password(12)
+    pas.save_password(str_)
+    pas.show_password(filename='password.txt')
