@@ -85,7 +85,12 @@ class PasswordManager():
                 if not lines:
                     print('no password >> please cerate a password')
                     return
-                line = lines[::-1]
+                lines = lines[::-1]
+                with open(filename, 'w') as file:
+                    file.writelines()
+                    print('password deleted successfully.')
+        except FileNotFoundError:
+            print('pass word file not found')
 
     def encrypt_password(self):
         pass
