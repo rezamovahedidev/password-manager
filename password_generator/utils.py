@@ -78,7 +78,7 @@ class PasswordManager():
 
             console.print(table)
 
-    def removeL_password(self):
+    def remove_password(self, filename='password.txt'):
         pass
 
     def encrypt_password(self):
