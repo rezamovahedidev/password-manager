@@ -26,9 +26,9 @@ class PasswordManager():
     def g_random_password(self, lentgh=None):
         if lentgh is None:
             lentgh = self.default_pass
-        else:
-            chars = string.ascii_letters + string.ascii_uppercase + string.digits
-            passwords = ''.join(secrets.choice(chars) for _ in range(lentgh))
+      
+        chars = string.ascii_letters + string.ascii_uppercase + string.digits
+        passwords = ''.join(secrets.choice(chars) for _ in range(lentgh))
 
         return passwords
 
