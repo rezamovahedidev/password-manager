@@ -4,71 +4,74 @@ from rich.table import Table
 from rich.console import Console
 
 
-class PasswordManager():
-
-    '''
-    a password manager return random passwords and save it
-    '''
+class PasswordManager:
+    """
+    A simple password manager:
+    - Generate random passwords (letters, numbers, mixed)
+    - Save passwords to a file
+    - Show passwords in CLI with rich tables
+    - Remove last password
+    """
 
     def __init__(self, filename='password.txt', default_pass=12):
         self.filename = filename
         self.default_pass = default_pass
 
+        # Initialize the file with a header if it does not exist
         with open(self.filename, 'w') as file:
-            file.write('=====PASSWORDS====\n')
+            file.write('===== PASSWORDS =====\n')
 
     def __len__(self):
-        self.default_pass
+        # Return default password length
+        return self.default_pass
 
     def __str__(self):
-        self.filename
+        # Return filename string
+        return f"Password file: {self.filename}"
 
-    def g_random_password(self, lentgh=None):
-        if lentgh is None:
-            lentgh = self.default_pass
-      
-        chars = string.ascii_letters + string.ascii_uppercase + string.digits
-        passwords = ''.join(secrets.choice(chars) for _ in range(lentgh))
+    def g_random_password(self, length=None):
+        """Generate a random password with letters and digits"""
+        if length is None:
+            length = self.default_pass
 
-        return passwords
+        chars = string.ascii_letters + string.digits
+        password = ''.join(secrets.choice(chars) for _ in range(length))
+        return password
 
     def save_password(self, password):
-        '''
-        save password to file txt
-        '''
+        """Save a password to the file"""
         try:
-            print('password created succesfullly')
             with open(self.filename, 'a') as file:
-                file.write(password).split('\n')
+                file.write(password + "\n")
+            print("Password saved successfully.")
         except ValueError:
-            print('Value Error check the the lenght or password')
+            print("Value Error: check the password length.")
 
-    def number_password(self, lenght=None):
-        if lenght is None:
-            lenght = self.default_pass
+    def number_password(self, length=None):
+        """Generate a password only with digits"""
+        if length is None:
+            length = self.default_pass
 
-        number_pass = string.digits + string.digits
-        passwords = ''.join(secrets.choice(number_pass) for _ in range(lenght))
+        digits = string.digits
+        password = ''.join(secrets.choice(digits) for _ in range(length))
+        return password
 
-        return passwords
+    def string_password(self, length=None):
+        """Generate a password only with letters"""
+        if length is None:
+            length = self.default_pass
 
-    def string_password(self, lenght=None):
-        if lenght is None:
-            lenght = self.default_pass
-
-        string_pass = string.ascii_letters + \
-            string.ascii_uppercase + string.ascii_lowercase
-        passwords = ''.join(secrets.choice(string_pass) for _ in range(lenght))
-
-        return passwords
+        letters = string.ascii_letters
+        password = ''.join(secrets.choice(letters) for _ in range(length))
+        return password
 
     def show_password(self, filename='password.txt'):
+        """Show all passwords in a table using rich"""
         console = Console()
-        table = Table(
-            title='PASSWORD'
-        )
-        table.add_column('ID', style='green')
-        table.add_column('Password', style='red')
+        table = Table(title="PASSWORDS")
+
+        table.add_column("ID", style="green")
+        table.add_column("Password", style="red")
 
         with open(filename, 'r') as file:
             for i, line in enumerate(file, start=1):
@@ -76,21 +79,28 @@ class PasswordManager():
                     pwd = line.strip()
                     table.add_row(str(i), pwd)
 
-            console.print(table)
+        console.print(table)
 
     def remove_password(self, filename='password.txt'):
+        """Remove the last saved password"""
         try:
             with open(filename, 'r') as file:
-                lines = file.readline()
-                if not lines:
-                    print('no password >> please cerate a password')
-                    return
-                lines = lines[::-1]
-                with open(filename, 'w') as file:
-                    file.writelines()
-                    print('password deleted successfully.')
+                lines = file.readlines()
+
+            if len(lines) <= 1:  # Only header exists
+                print("No password found. Please create one first.")
+                return
+
+            # Remove the last line
+            lines = lines[:-1]
+
+            with open(filename, 'w') as file:
+                file.writelines(lines)
+
+            print("Last password deleted successfully.")
         except FileNotFoundError:
-            print('pass word file not found')
+            print("Password file not found.")
 
     def encrypt_password(self):
+        """Placeholder for future encryption feature"""
         pass
